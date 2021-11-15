@@ -9,17 +9,17 @@ import java.util.Scanner;
  * 정답 : 가장 마지막으로 Y가 나오는 거리 distance
  */
 public class Main_2110 {
-    static Scanner sc = new Scanner(System.in);
-    static int N, C;            // N : 집의 개수 (2~2만), C : 공유기의 개수 (2~N)
-    static int[] coordinates;    // coordinate : 좌표 (0~10억)
+    private static Scanner sc = new Scanner(System.in);
+    private static int house, router;            // N : 집의 개수 (2~2만), C : 공유기의 개수 (2~N)
+    private static int[] coordinates;    // coordinate : 좌표 (0~10억)
 
-    static void input() {
-        N = sc.nextInt();
-        C = sc.nextInt();
+    public static void input() {
+        house = sc.nextInt();
+        router = sc.nextInt();
 
-        coordinates = new int[N];
+        coordinates = new int[house];
 
-        for (int i = 0; i < N; i++) {
+        for (int i = 0; i < house; i++) {
             coordinates[i] = sc.nextInt();
         }
 
@@ -28,13 +28,15 @@ public class Main_2110 {
 
     // 풀이의 핵심이 되는 메소드. 답이 되는 조건을 잘 파악하고 작성할 것.
     // 가장 인접한 두 공유기 사이의 거리를 distance로 했을 때 C개의 공유기를 N개의 집에 설치할 수 있는가? Y / N
-    static boolean determinate(int distance) {
+    public static boolean determinate(int distance) {
         int countC = 1;     //가장 왼쪽 집은 무조건 공유기를 설치함
-        int currentCoordinate, compareCoordinate, gap;
+        int currentCoordinate;
+        int compareCoordinate;
+        int gap;
 
         currentCoordinate = coordinates[0];
 
-        for (int i = 1; i < N; i++) {
+        for (int i = 1; i < house; i++) {
             compareCoordinate = coordinates[i];
             gap = compareCoordinate - currentCoordinate;
 
@@ -43,7 +45,7 @@ public class Main_2110 {
                 currentCoordinate = compareCoordinate;
             }
 
-            if (countC == C) {
+            if (countC == router) {
                 return true;
             }
         }
@@ -53,8 +55,10 @@ public class Main_2110 {
 
     // Parametric Search에서 반복적으로 사용되는 메소드 -> 암기!!!!!!!!!!!
     // left, right만 문제에 맞게 작성해주면 됨
-    static void parametricSearch() {
-        int left = 0, right = 1000000000, result = 0;
+    public static void parametricSearch() {
+        int left = 0;
+        int right = 1000000000;
+        int result = 0;
 
         while (left <= right) {
             int mid = (left + right) / 2;

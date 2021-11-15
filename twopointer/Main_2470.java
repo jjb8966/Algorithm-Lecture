@@ -8,35 +8,38 @@ import java.util.Arrays;
 public class Main_2470 {
     //Scanner를 쓰면 시간초과가 나고 BufferedReader를 쓰면 정답이되는 문제... 웬만하면 BufferedReader 쓰는게 좋을듯
     //static Scanner sc = new Scanner(System.in);
-    static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-    static int N;       //2~10만
-    static int[] array;
+    private static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+    private static int N;       //2~10만
+    private static int[] values;
 
-    static void input() throws IOException {
+    public static void input() throws IOException {
         String[] temp;
         N = Integer.parseInt(br.readLine());
         temp = br.readLine().split(" ");
 
-        array = new int[N];
+        values = new int[N];
 
         for (int i = 0; i < N; i++) {
-            array[i] = Integer.parseInt(temp[i]);
+            values[i] = Integer.parseInt(temp[i]);
         }
 
-        Arrays.sort(array);
+        Arrays.sort(values);
     }
 
-    static void twoPointer() {
-        int left = 0, right = N - 1, sum, minimumSum = Integer.MAX_VALUE;
+    public static void twoPointer() {
+        int left = 0;
+        int right = N - 1;
+        int sum;
+        int minimumSum = Integer.MAX_VALUE;
         int[] result = new int[2];
 
         while (left < right) {
-            sum = array[left] + array[right];
+            sum = values[left] + values[right];
 
             if (minimumSum > Math.abs(sum)) {
                 minimumSum = Math.abs(sum);
-                result[0] = array[left];
-                result[1] = array[right];
+                result[0] = values[left];
+                result[1] = values[right];
             }
 
             if (sum > 0) {

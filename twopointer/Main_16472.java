@@ -10,10 +10,10 @@ import java.util.LinkedList;
  * 2. right의 마지막 인덱스를 잘못 설정하여 반복문이 제대로 작동하지 않는 실수를 함
  */
 public class Main_16472 {
-    static int N;
-    static char[] Alphabets;
+    private static int N;
+    private static char[] Alphabets;
 
-    static void input() throws IOException {
+    public static void input() throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
         N = Integer.parseInt(br.readLine());
@@ -27,7 +27,7 @@ public class Main_16472 {
     }
 
     // 각 알파벳이 몇 개 있는지에 대한 정보를 담고 있는 배열 countAlphabet의 원소들의 총합을 리턴
-    static int sumOfAlphabet(int[] countAlphabet) {
+    public static int sumOfAlphabet(int[] countAlphabet) {
         int sum = 0;
 
         for (int temp : countAlphabet) {
@@ -38,7 +38,7 @@ public class Main_16472 {
     }
 
     // 리스트에 character가 존재하지 않으면 true 리턴, 존재하면 false 리턴
-    static boolean hasNotCharacter(LinkedList<Character> usedAlphabet, char character) {
+    public static boolean hasNotCharacter(LinkedList<Character> usedAlphabet, char character) {
         for (char temp : usedAlphabet) {
             if (temp == character) {
                 return false;
@@ -47,7 +47,7 @@ public class Main_16472 {
         return true;
     }
     // 현재 고른 N종류의 알파벳 개수가 maxCount보다 크면 maxCount를 갱신해주는 메소드
-    static int updateMaxCount(int[] countAlphabet, int maxCount) {
+    public static int updateMaxCount(int[] countAlphabet, int maxCount) {
         int count = sumOfAlphabet(countAlphabet);
 
         if (maxCount < count) {
@@ -57,11 +57,15 @@ public class Main_16472 {
         return maxCount;
     }
 
-    static void twoPointer() {
+    public static void twoPointer() {
         LinkedList<Character> usedAlphabet = new LinkedList<>();
         int[] countAlphabet = new int[26];
-        int left = 0, right = 0, kind = 0, maxCount = Integer.MIN_VALUE;
-        char leftAlphabet, rightAlphabet;
+        int left = 0;
+        int right = 0;
+        int kind = 0;
+        int maxCount = Integer.MIN_VALUE;
+        char leftAlphabet;
+        char rightAlphabet;
 
         while (right != (Alphabets.length - 1)) {
             leftAlphabet = Alphabets[left];

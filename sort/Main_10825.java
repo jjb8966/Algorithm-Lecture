@@ -3,9 +3,9 @@ package sort;
 import java.util.*;
 
 public class Main_10825 {
-    static Scanner sc = new Scanner(System.in);
-    static Element[] Students;
-    static int count;
+    private static Scanner sc = new Scanner(System.in);
+    private static Element[] Students;
+    private static int count;
 
     static class Element implements Comparable<Element> {
         String name;
@@ -29,7 +29,7 @@ public class Main_10825 {
         }
     }
 
-    static void input() {
+    public static void input() {
         count = Integer.parseInt(sc.nextLine());
         Students = new Element[count];
 
@@ -45,11 +45,11 @@ public class Main_10825 {
         }
     }
 
-    static void sortStudents() {
+    public static void sortStudents() {
         Arrays.sort(Students);      //오버라이딩 한 compareTo 메소드를 기준으로 정렬
     }
 
-    static void print() {
+    public static void print() {
         StringBuilder sb = new StringBuilder();
         for (Element temp : Students) {
             sb.append(temp.name + "\n");

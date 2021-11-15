@@ -4,8 +4,8 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main_15970 {
-    static int N;       //점의 개수
-    static int[] distances;
+    private static int N;       //점의 개수
+    private static int[] distances;
     private static Dot[] dots;
 
     static class Dot implements Comparable<Dot> {
@@ -29,7 +29,7 @@ public class Main_15970 {
         }
     }
 
-    static void input() {
+    public static void input() {
         Scanner sc = new Scanner(System.in);
 
         N = sc.nextInt();
@@ -43,9 +43,12 @@ public class Main_15970 {
         }
     }
 
-    static void getResult() {
-        int leftDistance, rightDistance, result = 0;
-        Dot leftDot, rightDot;
+    public static void getResult() {
+        int leftDistance;
+        int rightDistance;
+        int result = 0;
+        Dot leftDot;
+        Dot rightDot;
 
         Arrays.sort(dots);
 

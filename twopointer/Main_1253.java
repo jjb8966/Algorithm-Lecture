@@ -7,32 +7,33 @@ import java.util.Arrays;
 import java.util.StringTokenizer;
 
 public class Main_1253 {
-    static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-    static int N;           // 1~2000
-    static int[] array;     // 각 숫자 : -10억~10억
+    private static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+    private static int N;           // 1~2000
+    private static int[] values;     // 각 숫자 : -10억~10억
     // 답을 찾는 과정에서 두 수를 더하는 경우 최대값이 20억을 넘지 않으므로 int로 충분
 
-    static void input() throws IOException {
+    public static void input() throws IOException {
         N = Integer.parseInt(br.readLine());
         StringTokenizer st = new StringTokenizer(br.readLine());
-        array = new int[N];
+        values = new int[N];
 
         for (int i = 0; i < N; i++) {
-            array[i] = Integer.parseInt(st.nextToken());
+            values[i] = Integer.parseInt(st.nextToken());
         }
 
-        Arrays.sort(array);     // O(NlogN)
+        Arrays.sort(values);     // O(NlogN)
     }
 
-    static void twoPointer() {
+    public static void twoPointer() {
         int sumOfGoodNumber = 0;
 
         for (int i = 0; i < N; i++) {       // O(N)
-            int left = 0, right = N - 1;
-            int findNumber = array[i];
+            int left = 0;
+            int right = N - 1;
+            int findNumber = values[i];
 
             while (left < right) {          // left, right의 탐색 -> O(N)      최종 시간복잡도 : O(N^2) -> 4,000,000 (충분)
-                int sum = array[left] + array[right];
+                int sum = values[left] + values[right];
 
                 // 서로 다른 두 수의 합이어야 하므로 찾는 수와 인덱스가 같으면 left, right를 옮김
                 if (i == left) {

@@ -6,21 +6,21 @@ import java.util.Scanner;
 public class Main_15649 {
     static StringBuilder sb = new StringBuilder();
     static int N, M;
-    static int[] intArray;
+    static int[] values;
     static int[] used;
 
     private static void input() {
         Scanner sc = new Scanner(System.in);
         N = sc.nextInt();
         M = sc.nextInt();
-        intArray = new int[M + 1];
+        values = new int[M + 1];
         used = new int[N + 1];        //1부터 N까지의 숫자중 사용된 것이 있으면 1, 없으면 0을 저장
     }
 
     public static void recurrenceFunction(int k) {
         if (k == M + 1) {
             for (int i = 1; i <= M; i++) {
-                sb.append(intArray[i] + " ");
+                sb.append(values[i] + " ");
             }
             sb.append("\n");
         } else {
@@ -29,12 +29,12 @@ public class Main_15649 {
                     continue;
                 }
 
-                intArray[k] = cand;
+                values[k] = cand;
                 used[cand]++;
 
                 recurrenceFunction(k + 1);
 
-                intArray[k] = 0;
+                values[k] = 0;
                 used[cand]--;
             }
         }

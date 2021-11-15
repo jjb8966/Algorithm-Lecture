@@ -6,27 +6,27 @@ import java.util.Scanner;
 public class Main_15652 {
     static StringBuilder sb = new StringBuilder();
     static int N, M;
-    static int[] intArray;
+    static int[] values;
 
     static void input() {
         Scanner sc = new Scanner(System.in);
         N = sc.nextInt();
         M = sc.nextInt();
-        intArray = new int[M + 1];
+        values = new int[M + 1];
     }
 
     private static void recurrenceFunction(int k) {
         if (k == M + 1) {
             for (int i = 1; i <= M; i++) {
-                sb.append(intArray[i] + " ");
+                sb.append(values[i] + " ");
             }
             sb.append("\n");
         } else {
             for (int cand = 1; cand <= N; cand++) {
-                intArray[k] = cand;
-                if (intArray[k - 1] <= intArray[k]) {
+                values[k] = cand;
+                if (values[k - 1] <= values[k]) {
                     recurrenceFunction(k + 1);
-                    intArray[k] = 0;
+                    values[k] = 0;
                 }
             }
         }

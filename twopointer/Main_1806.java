@@ -3,28 +3,31 @@ package twopointer;
 import java.util.Scanner;
 
 public class Main_1806 {
-    static int N, M;
-    static int[] array;
+    private static int N, M;
+    private static int[] sequences;
 
-    static void input() {
+    public static void input() {
         Scanner sc = new Scanner(System.in);
         N = sc.nextInt();
         M = sc.nextInt();
 
-        array = new int[N];
+        sequences = new int[N];
 
         for (int i = 0; i < N; i++) {
-            array[i] = sc.nextInt();
+            sequences[i] = sc.nextInt();
         }
     }
 
-    static void twoPointer() {
-        int right = 0, sum = 0, count = 0, minCount = N + 1;
+    public static void twoPointer() {
+        int right = 0;
+        int sum = 0;
+        int count = 0;
+        int minCount = N + 1;
 
         for (int left = 0; left < N; left++) {
             // right를 옮길 수 있을 때 까지 옮기기
             while (right < N && sum < M) {
-                sum += array[right];
+                sum += sequences[right];
                 right++;
             }
 
@@ -38,7 +41,7 @@ public class Main_1806 {
             }
 
             // left - 1을 구간에서 제외
-            sum -= array[left];
+            sum -= sequences[left];
         }
 
         System.out.println(minCount);
