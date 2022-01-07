@@ -27,7 +27,7 @@ public class Main_11057 {
             for (int i = 2; i <= length; i++) {
                 for (int j = 0; j <= 9; j++) {
                     for (int k = 0; k <= j; k++) {
-                        dynamicSolution[i][j] += dynamicSolution[i-1][k] % 10007;
+                        dynamicSolution[i][j] += dynamicSolution[i - 1][k] % 10007;
                     }
                 }
             }
@@ -35,7 +35,7 @@ public class Main_11057 {
 
         int result = 0;
 
-        for (int i = 0; i <=9; i++) {
+        for (int i = 0; i <= 9; i++) {
             result += dynamicSolution[length][i] % 10007;
         }
 
@@ -47,6 +47,5 @@ public class Main_11057 {
     public static void main(String[] args) throws IOException {
         input();
         process();
-        Predicate.isEqual();
     }
 }

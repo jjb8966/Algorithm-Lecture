@@ -23,7 +23,7 @@ public class Main_11726 {
 
         //점화식
         for (int i = 3; i <= width; i++) {
-            dynamicSolution[i] = (dynamicSolution[i-1] + dynamicSolution[i-2]) % 10007;
+            dynamicSolution[i] = (dynamicSolution[i - 1] + dynamicSolution[i - 2]) % 10007;
         }
         System.out.println(dynamicSolution[width]);
     }
