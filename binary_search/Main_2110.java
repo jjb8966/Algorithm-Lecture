@@ -1,4 +1,4 @@
-package binarysearch;
+package binary_search;
 
 import java.util.Arrays;
 import java.util.Scanner;
@@ -10,16 +10,17 @@ import java.util.Scanner;
  */
 public class Main_2110 {
     private static Scanner sc = new Scanner(System.in);
-    private static int house, router;            // N : 집의 개수 (2~2만), C : 공유기의 개수 (2~N)
+    private static int numberOfHouse;
+    private static int numberOfRouter;            // N : 집의 개수 (2~2만), C : 공유기의 개수 (2~N)
     private static int[] coordinates;    // coordinate : 좌표 (0~10억)
 
     public static void input() {
-        house = sc.nextInt();
-        router = sc.nextInt();
+        numberOfHouse = sc.nextInt();
+        numberOfRouter = sc.nextInt();
 
-        coordinates = new int[house];
+        coordinates = new int[numberOfHouse];
 
-        for (int i = 0; i < house; i++) {
+        for (int i = 0; i < numberOfHouse; i++) {
             coordinates[i] = sc.nextInt();
         }
 
@@ -29,23 +30,23 @@ public class Main_2110 {
     // 풀이의 핵심이 되는 메소드. 답이 되는 조건을 잘 파악하고 작성할 것.
     // 가장 인접한 두 공유기 사이의 거리를 distance로 했을 때 C개의 공유기를 N개의 집에 설치할 수 있는가? Y / N
     public static boolean determinate(int distance) {
-        int countC = 1;     //가장 왼쪽 집은 무조건 공유기를 설치함
+        int numberOfRoutersCanBeInstalled = 1;     //가장 왼쪽 집은 무조건 공유기를 설치함
         int currentCoordinate;
         int compareCoordinate;
         int gap;
 
         currentCoordinate = coordinates[0];
 
-        for (int i = 1; i < house; i++) {
+        for (int i = 1; i < numberOfHouse; i++) {
             compareCoordinate = coordinates[i];
-            gap = compareCoordinate - currentCoordinate;
+            gap = compareCoordinate - currentCoordinate;        // 오름차순으로 정렬했기 때문에 가능한 수식
 
             if (gap >= distance) {
-                countC++;
+                numberOfRoutersCanBeInstalled++;
                 currentCoordinate = compareCoordinate;
             }
 
-            if (countC == router) {
+            if (numberOfRoutersCanBeInstalled == numberOfRouter) {
                 return true;
             }
         }
@@ -79,3 +80,4 @@ public class Main_2110 {
         parametricSearch();
     }
 }
+

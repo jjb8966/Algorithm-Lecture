@@ -1,4 +1,4 @@
-package twopointer;
+package two_pointer;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -7,17 +7,18 @@ import java.util.Arrays;
 import java.util.StringTokenizer;
 
 public class Main_1253 {
-    private static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-    private static int N;           // 1~2000
+
+    private static int sequence;           // 1~2000
     private static int[] values;     // 각 숫자 : -10억~10억
     // 답을 찾는 과정에서 두 수를 더하는 경우 최대값이 20억을 넘지 않으므로 int로 충분
 
     public static void input() throws IOException {
-        N = Integer.parseInt(br.readLine());
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        sequence = Integer.parseInt(br.readLine());
         StringTokenizer st = new StringTokenizer(br.readLine());
-        values = new int[N];
+        values = new int[sequence];
 
-        for (int i = 0; i < N; i++) {
+        for (int i = 0; i < sequence; i++) {
             values[i] = Integer.parseInt(st.nextToken());
         }
 
@@ -27,9 +28,9 @@ public class Main_1253 {
     public static void twoPointer() {
         int sumOfGoodNumber = 0;
 
-        for (int i = 0; i < N; i++) {       // O(N)
+        for (int i = 0; i < sequence; i++) {       // O(N)
             int left = 0;
-            int right = N - 1;
+            int right = sequence - 1;
             int findNumber = values[i];
 
             while (left < right) {          // left, right의 탐색 -> O(N)      최종 시간복잡도 : O(N^2) -> 4,000,000 (충분)

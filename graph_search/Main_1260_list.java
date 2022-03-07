@@ -1,4 +1,4 @@
-package graphsearch;
+package graph_search;
 
 import java.io.BufferedReader;
 import java.io.IOException;
